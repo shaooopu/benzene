@@ -186,9 +186,9 @@
             <h2 class="section-title">Gallery 画廊</h2>
             <p>这里是服务器画廊。</p>
             <div class="gallery-grid">
-                <img src="Gallery/2026-05-23_10.12.22.png" alt="画廊图片 1">
-                <img src="Gallery/2026-06-13_23.30.09.png" alt="画廊图片 2">
-                <img src="Gallery/2026-07-25_15.20.18.png" alt="画廊图片 3">
+                <img src="Gallery/2026-05-23_10.12.22.webp" data-full="Gallery/2026-05-23_10.12.22.png" alt="画廊图片 1">
+                <img src="Gallery/2026-06-13_23.30.09.webp" data-full="Gallery/2026-06-13_23.30.09.png" alt="画廊图片 2">
+                <img src="Gallery/2026-07-25_15.20.18.webp" data-full="Gallery/2026-07-25_15.20.18.png" alt="画廊图片 3">
             </div>
         </article>
     </main>
@@ -229,7 +229,7 @@
 
         galleryImages.forEach(img => {
             img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
+                lightboxImg.src = img.dataset.full || img.src;
                 lightboxImg.alt = img.alt;
                 lightbox.classList.add('active');
             });
