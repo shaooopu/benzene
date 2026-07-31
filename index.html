@@ -112,6 +112,141 @@
             margin-top: 0.75rem;
         }
 
+        .player-section {
+            padding: 1.75rem 0;
+            margin-bottom: 0;
+        }
+
+        .player-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .player-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .player-title {
+            font-size: 1.5rem;
+            color: #338bff;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #5a7299;
+            box-shadow: 0 0 0 0 rgba(90, 114, 153, 0);
+            flex-shrink: 0;
+        }
+
+        .status-dot.online {
+            background: #5cff8a;
+            box-shadow: 0 0 10px rgba(92, 255, 138, 0.7);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .status-dot.offline {
+            background: #ff5c5c;
+            box-shadow: 0 0 10px rgba(255, 92, 92, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 6px rgba(92, 255, 138, 0.5); }
+            50% { box-shadow: 0 0 14px rgba(92, 255, 138, 0.9); }
+        }
+
+        .player-count {
+            color: #8ba3c7;
+            font-size: 0.95rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .player-count strong {
+            color: #e8f1ff;
+            font-weight: 600;
+        }
+
+        .player-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .player-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.9rem;
+            background: rgba(51, 139, 255, 0.12);
+            border: 1px solid rgba(51, 139, 255, 0.35);
+            border-radius: 999px;
+            color: #e8f1ff;
+            font-size: 0.95rem;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            letter-spacing: 0.02em;
+        }
+
+        .player-chip::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #5cff8a;
+            box-shadow: 0 0 6px rgba(92, 255, 138, 0.6);
+        }
+
+        .player-empty {
+            color: #5a7299;
+            font-size: 1rem;
+            font-style: italic;
+            margin: 0.5rem 0 0;
+        }
+
+        .player-empty::before {
+            content: "🍃 ";
+        }
+
+        .player-loading,
+        .player-error {
+            color: #8ba3c7;
+            font-size: 0.95rem;
+            margin: 0.5rem 0 0;
+        }
+
+        .player-error {
+            color: #ff9a5c;
+        }
+
+        .refresh-btn {
+            background: transparent;
+            border: 1px solid rgba(51, 139, 255, 0.4);
+            color: #8ba3c7;
+            padding: 0.35rem 0.7rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .refresh-btn:hover {
+            border-color: #338bff;
+            color: #338bff;
+        }
+
+        .refresh-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -168,10 +303,26 @@
         <h1 class="main-title">苯</h1>
         <p class="subtitle">一个小小的服务器</p>
         <p class="version">原版 1.21.11</p>
-        <p class="server-address">服务器地址：benezene.top</p>
+        <p class="server-address">服务器地址：benzene.top</p>
     </section>
 
     <main class="sections">
+        <article class="section" style="padding-top: 0;">
+            <div class="player-section">
+                <div class="player-header">
+                    <div class="player-title-wrap">
+                        <span class="status-dot" id="statusDot"></span>
+                        <h2 class="player-title">谁在玩？ who playing</h2>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span class="player-count" id="playerCount">— / —</span>
+                        <button class="refresh-btn" id="refreshBtn" title="刷新">刷新</button>
+                    </div>
+                </div>
+                <div id="playerContent" class="player-loading">正在查询服务器状态…</div>
+            </div>
+        </article>
+
         <article class="section">
             <h2 class="section-title">News 新闻</h2>
             <p class="placeholder">暂无新闻</p>
@@ -190,6 +341,7 @@
                 <img src="Gallery/2026-06-13_23.30.09.webp" data-full="Gallery/2026-06-13_23.30.09.png" alt="画廊图片 2">
                 <img src="Gallery/2026-07-25_15.20.18.webp" data-full="Gallery/2026-07-25_15.20.18.png" alt="画廊图片 3">
                 <img src="Gallery/2026-07-26_22.43.30_2.webp" data-full="Gallery/2026-07-26_22.43.30_2.png" alt="画廊图片 4">
+                <img src="Gallery/2026-07-31_23.24.47.webp" data-full="Gallery/2026-07-31_23.24.47.png" alt="画廊图片 4"
             </div>
         </article>
     </main>
@@ -245,6 +397,81 @@
                 lightbox.classList.remove('active');
             }
         });
+
+        const statusDot = document.getElementById('statusDot');
+        const playerCount = document.getElementById('playerCount');
+        const playerContent = document.getElementById('playerContent');
+        const refreshBtn = document.getElementById('refreshBtn');
+        const API_URL = 'https://uapis.cn/api/v1/game/minecraft/serverstatus?server=benzene.top';
+
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, ch => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[ch]));
+        }
+
+        function renderState(state) {
+            statusDot.className = 'status-dot';
+            if (state.status === 'loading') {
+                statusDot.classList.remove('online', 'offline');
+                playerCount.textContent = '— / —';
+                playerContent.className = 'player-loading';
+                playerContent.textContent = '正在查询服务器状态…';
+            } else if (state.status === 'error') {
+                statusDot.classList.add('offline');
+                playerCount.textContent = '— / —';
+                playerContent.className = 'player-error';
+                playerContent.textContent = '查询失败：' + escapeHtml(state.message || '未知错误');
+            } else if (state.status === 'offline') {
+                statusDot.classList.add('offline');
+                playerCount.innerHTML = '<strong>0</strong> / ' + (state.max || '—');
+                playerContent.className = 'player-empty';
+                playerContent.textContent = '空空如也';
+            } else if (state.status === 'online') {
+                statusDot.classList.add('online');
+                playerCount.innerHTML = '<strong>' + state.players + '</strong> / ' + (state.max || '—');
+                const list = state.onlinePlayers || [];
+                if (list.length === 0) {
+                    playerContent.className = 'player-empty';
+                    playerContent.textContent = '空空如也';
+                } else {
+                    playerContent.className = 'player-list';
+                    playerContent.innerHTML = list.map(p => {
+                        const name = p && p.name ? p.name : '匿名玩家';
+                        return '<span class="player-chip">' + escapeHtml(name) + '</span>';
+                    }).join('');
+                }
+            }
+        }
+
+        async function fetchPlayers() {
+            renderState({ status: 'loading' });
+            refreshBtn.disabled = true;
+            try {
+                const res = await fetch(API_URL, { cache: 'no-store' });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+                if (!data.online) {
+                    renderState({ status: 'offline', max: data.max_players });
+                    return;
+                }
+                const list = Array.isArray(data.online_players) ? data.online_players : [];
+                renderState({
+                    status: 'online',
+                    players: data.players,
+                    max: data.max_players,
+                    onlinePlayers: list
+                });
+            } catch (err) {
+                renderState({ status: 'error', message: err.message || String(err) });
+            } finally {
+                refreshBtn.disabled = false;
+            }
+        }
+
+        refreshBtn.addEventListener('click', fetchPlayers);
+        fetchPlayers();
+        setInterval(fetchPlayers, 60000);
     </script>
 </body>
 </html>
