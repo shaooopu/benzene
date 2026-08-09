@@ -80,6 +80,37 @@
             letter-spacing: 0.05em;
         }
 
+        .mod-download {
+            margin-top: 1.25rem;
+        }
+
+        .mod-download a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.6rem 1.1rem;
+            background: rgba(51, 139, 255, 0.15);
+            border: 1px solid rgba(51, 139, 255, 0.45);
+            border-radius: 8px;
+            color: #338bff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .mod-download a:hover {
+            background: rgba(51, 139, 255, 0.28);
+            border-color: #338bff;
+            color: #e8f1ff;
+            transform: translateY(-1px);
+        }
+
+        .mod-download a::before {
+            content: "⬇";
+            font-size: 1rem;
+        }
+
         .sections {
             max-width: 800px;
             margin: 0 auto;
@@ -302,8 +333,13 @@
 
         <h1 class="main-title">苯</h1>
         <p class="subtitle">一个小小的服务器</p>
-        <p class="version">原版 1.21.11</p>
+        <p class="version">1.21.11 fabric 农夫乐事</p>
         <p class="server-address">服务器地址：benzene.top</p>
+        <p class="mod-download">
+            <a href="https://cdn-alt.modrinth.com/data/7vxePowz/versions/HsAFtmK9/FarmersDelight-1.21.11-3.6.11%2Brefabricated.jar?mr_download_reason=standalone" download>
+                下载 Farmer's Delight 模组
+            </a>
+        </p>
     </section>
 
     <main class="sections">
